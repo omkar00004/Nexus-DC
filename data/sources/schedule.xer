@@ -1,0 +1,148 @@
+ERMHDR	19.12	2026-07-20	Project	admin	Meridian_EPC	Primavera P6	PMDB	USD
+%T	PROJECT
+%F	proj_id	fy_start_month_num	rsrc_self_add_flag	allow_complete_flag	rsrc_multi_assign_flag	checkout_flag	project_flag	step_complete_flag	cost_qty_recalc_flag	batch_sum_flag	name_sep_char	def_complete_pct_type	proj_short_name	acct_id	orig_proj_id	source_proj_id	base_type_id	clndr_id	sum_base_proj_id	task_code_base	task_code_step	task_code_prefix	guid	def_duration_type	task_code_prefix_flag	def_task_type	def_rate_type	add_actual_cost	last_recalc_date	plan_start_date	plan_end_date	scd_end_date	add_date	last_tasksum_date	fcst_start_date	def_rate_type_id	last_fin_dates_id	last_baseline_update_date	cr_external_key	apply_actuals_date	location_id	loaded_scope_level	export_flag	new_fin_dates_id	baselines_to_export	baseline_names_to_export	next_data_date	close_period_flag	sum_refresh_date	trsrcsum_loaded
+%R	1001	1	Y	Y	Y	N	Y	N	N	N	.	CP_Drtn	MDC-P1					1		1000	10	ACT	MDCPROJ0001GUID	DT_FixedDUR2	N	TT_Task	COST_PER_QTY1	Y	2026-07-20 00:00	2025-12-01 08:00	2026-12-25 17:00	2026-12-25 17:00	2025-12-01 08:00										Y					N		N
+%T	CALENDAR
+%F	clndr_id	default_flag	clndr_name	proj_id	base_clndr_id	last_chng_date	clndr_type	day_hr_cnt	week_hr_cnt	month_hr_cnt	year_hr_cnt	rsrc_private	clndr_data
+%R	1	Y	Std 5-Day Workweek			2025-12-01 08:00	CA_Base	8	40	172	2000	N	(0||CalendarData()(0||DaysOfWeek()(0||1()())(0||2()(0||0(s|08:00|f|12:00)(s|13:00|f|17:00)))(0||3()(0||0(s|08:00|f|12:00)(s|13:00|f|17:00)))(0||4()(0||0(s|08:00|f|12:00)(s|13:00|f|17:00)))(0||5()(0||0(s|08:00|f|12:00)(s|13:00|f|17:00)))(0||6()(0||0(s|08:00|f|12:00)(s|13:00|f|17:00)))(0||7()()))(0||VIEW(ShowTotal|Y)))
+%T	SCHEDOPTIONS
+%F	schedoptions_id	proj_id	sched_outer_depend_type	sched_open_critical_flag	sched_lag_early_start_flag	sched_retained_logic	sched_setplantoforecast	sched_float_type	sched_calendar_on_relationship_lag	sched_use_expect_end_flag	sched_progress_override	level_float_thrs_cnt	level_outer_assign_flag	level_outer_assign_priority	level_over_alloc_pct	level_within_float_flag	level_keep_sched_date_flag	level_all_rsrc_flag	sched_use_project_end_date_for_float	enable_multiple_longest_path_calc	limit_multiple_longest_path_calc	max_multiple_longest_path	use_total_float_multiple_longest_paths	key_activity_for_multiple_longest_paths	LevelPrioritylist	sched_use_project_end_date_for_float2
+%R	1	1001	SD_Both	N	N	Y	N	FT_TotalFloat	CL_PredCal	Y	N	1	Y	N	25	N	Y	Y	Y	N	N		N			
+%T	PROJWBS
+%F	wbs_id	proj_id	obs_id	seq_num	est_wt	proj_node_flag	sum_data_flag	status_code	wbs_short_name	wbs_name	phase_id	parent_wbs_id	ev_user_pct	ev_etc_user_value	orig_cost	indep_remain_total_cost	ann_dscnt_rate_pct	dscnt_period_type	indep_remain_work_qty	anticip_start_date	anticip_end_date	ev_compute_type	ev_etc_compute_type	guid	tmpl_guid	plan_open_state
+%R	2000	1001	1	0	1	Y	Y	WS_Open	MDC-P1	Meridian Data Centre - Phase 1 (Nashik, 24MW, Rated-3/Tier III)			0.06	0.88	0	0			0			EC_Cmp_pct	EE_Etc_Rem_Cost	MDCWBSROOTGUID		
+%R	2001	1001	1	1	1	N	Y	WS_Open	ENG	Engineering & Design		2000	0.06	0.88	0	0			0			EC_Cmp_pct	EE_Etc_Rem_Cost	MDCWBSENGGUID		
+%R	2002	1001	1	2	1	N	Y	WS_Open	PRC	Procurement (Long-Lead Equipment)		2000	0.06	0.88	0	0			0			EC_Cmp_pct	EE_Etc_Rem_Cost	MDCWBSPRCGUID		
+%R	2003	1001	1	3	1	N	Y	WS_Open	CIV	Civil & Structural		2000	0.06	0.88	0	0			0			EC_Cmp_pct	EE_Etc_Rem_Cost	MDCWBSCIVGUID		
+%R	2004	1001	1	4	1	N	Y	WS_Open	ELE	Electrical Installation		2000	0.06	0.88	0	0			0			EC_Cmp_pct	EE_Etc_Rem_Cost	MDCWBSELEGUID		
+%R	2005	1001	1	5	1	N	Y	WS_Open	MEC	Mechanical & Cooling		2000	0.06	0.88	0	0			0			EC_Cmp_pct	EE_Etc_Rem_Cost	MDCWBSMECGUID		
+%R	2006	1001	1	6	1	N	Y	WS_Open	CXA	Integrated Testing & Commissioning		2000	0.06	0.88	0	0			0			EC_Cmp_pct	EE_Etc_Rem_Cost	MDCWBSCXAGUID		
+%T	TASK
+%F	task_id	proj_id	wbs_id	clndr_id	phys_complete_pct	rev_fdbk_flag	est_wt	lock_plan_flag	auto_compute_act_flag	complete_pct_type	task_type	duration_type	status_code	task_code	task_name	rsrc_id	total_float_hr_cnt	free_float_hr_cnt	remain_drtn_hr_cnt	act_work_qty	remain_work_qty	target_work_qty	target_drtn_hr_cnt	target_equip_qty	act_equip_qty	remain_equip_qty	cstr_date	act_start_date	act_end_date	late_start_date	late_end_date	expect_end_date	early_start_date	early_end_date	restart_date	reend_date	target_start_date	target_end_date	rem_late_start_date	rem_late_end_date	cstr_type	priority_type	suspend_date	resume_date	float_path	float_path_order	guid	tmpl_guid	cstr_date2	cstr_type2	driving_path_flag	act_this_per_work_qty	act_this_per_equip_qty	external_early_start_date	external_late_end_date	create_date	update_date	create_user	update_user	location_id	control_updates_flag
+%R	5001	1001	2001	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-001	Project Mobilization & Site Establishment		0	0	0	0	0	0	40	0	0	0		2025-12-01 08:00	2025-12-05 17:00	2025-12-01 08:00	2025-12-05 17:00		2025-12-01 08:00	2025-12-05 17:00			2025-12-01 08:00	2025-12-05 17:00				PT_Normal			1	1	MDCX0001				Y	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5002	1001	2001	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-002	Geotechnical Investigation & Topographic Survey		0	0	0	0	0	0	80	0	0	0		2025-12-08 08:00	2025-12-19 17:00	2025-12-08 08:00	2025-12-19 17:00		2025-12-08 08:00	2025-12-19 17:00			2025-12-08 08:00	2025-12-19 17:00				PT_Normal			1	1	MDCX0002				Y	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5003	1001	2001	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-003	Basis of Design & Critical Load Calculations		0	0	0	0	0	0	120	0	0	0		2025-12-22 08:00	2026-01-09 17:00	2025-12-22 08:00	2026-01-09 17:00		2025-12-22 08:00	2026-01-09 17:00			2025-12-22 08:00	2026-01-09 17:00				PT_Normal			1	1	MDCX0003				Y	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5004	1001	2001	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-004	Electrical SLD & Power System Design		0	0	0	0	0	0	160	0	0	0		2026-01-12 08:00	2026-02-06 17:00	2026-01-12 08:00	2026-02-06 17:00		2026-01-12 08:00	2026-02-06 17:00			2026-01-12 08:00	2026-02-06 17:00				PT_Normal			1	1	MDCX0004				Y	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5005	1001	2001	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-005	Mechanical & Cooling System Design		240	240	0	0	0	0	160	0	0	0		2026-01-12 08:00	2026-02-06 17:00	2026-01-12 08:00	2026-02-06 17:00		2026-01-12 08:00	2026-02-06 17:00			2026-01-12 08:00	2026-02-06 17:00				PT_Normal					MDCX0005				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5006	1001	2001	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-006	Structural & Architectural Design		240	240	0	0	0	0	144	0	0	0		2025-12-22 08:00	2026-01-14 17:00	2025-12-22 08:00	2026-01-14 17:00		2025-12-22 08:00	2026-01-14 17:00			2025-12-22 08:00	2026-01-14 17:00				PT_Normal					MDCX0006				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5007	1001	2001	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-007	Fire Detection & Suppression Design		240	240	0	0	0	0	96	0	0	0		2026-01-12 08:00	2026-01-27 17:00	2026-01-12 08:00	2026-01-27 17:00		2026-01-12 08:00	2026-01-27 17:00			2026-01-12 08:00	2026-01-27 17:00				PT_Normal					MDCX0007				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5008	1001	2001	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-008	IEEE 1584 Arc-Flash & Protective Coordination Study		240	240	0	0	0	0	112	0	0	0		2026-02-09 08:00	2026-02-26 17:00	2026-02-09 08:00	2026-02-26 17:00		2026-02-09 08:00	2026-02-26 17:00			2026-02-09 08:00	2026-02-26 17:00				PT_Normal					MDCX0008				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5009	1001	2001	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-009	Issue-For-Construction (IFC) Drawing Package		240	240	0	0	0	0	80	0	0	0		2026-02-09 08:00	2026-02-20 17:00	2026-02-09 08:00	2026-02-20 17:00		2026-02-09 08:00	2026-02-20 17:00			2026-02-09 08:00	2026-02-20 17:00				PT_Normal					MDCX0009				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5010	1001	2002	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-010	UPS System - Technical Bid Evaluation		0	0	0	0	0	0	96	0	0	0		2026-02-09 08:00	2026-02-24 17:00	2026-02-09 08:00	2026-02-24 17:00		2026-02-09 08:00	2026-02-24 17:00			2026-02-09 08:00	2026-02-24 17:00				PT_Normal			1	1	MDCX0010				Y	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5011	1001	2002	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-011	UPS System - Purchase Order Award		0	0	0	0	0	0	40	0	0	0		2026-02-25 08:00	2026-03-03 17:00	2026-02-25 08:00	2026-03-03 17:00		2026-02-25 08:00	2026-03-03 17:00			2026-02-25 08:00	2026-03-03 17:00				PT_Normal			1	1	MDCX0011				Y	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5012	1001	2002	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-012	UPS-02A - Manufacturing & Factory Build		0	0	0	0	0	0	640	0	0	0		2026-03-04 08:00	2026-06-23 17:00	2026-03-04 08:00	2026-06-23 17:00		2026-03-04 08:00	2026-06-23 17:00			2026-03-04 08:00	2026-06-23 17:00				PT_Normal			1	1	MDCX0012				Y	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5013	1001	2002	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-013	UPS-02A - Factory Acceptance Test (FAT)		0	0	0	0	0	0	48	0	0	0		2026-06-24 08:00	2026-07-01 17:00	2026-06-24 08:00	2026-07-01 17:00		2026-06-24 08:00	2026-07-01 17:00			2026-06-24 08:00	2026-07-01 17:00				PT_Normal			1	1	MDCX0013				Y	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5014	1001	2002	1	45	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Active	ACT-014	UPS-02A - Delivery to Site & Receiving Inspection		0	0	40	0	0	0	80	0	0	0		2026-07-02 08:00		2026-07-02 08:00	2026-08-13 17:00		2026-07-02 08:00	2026-08-13 17:00	2026-07-02 08:00	2026-08-13 17:00	2026-07-02 08:00	2026-07-15 17:00	2026-07-02 08:00	2026-08-13 17:00		PT_Normal			1	1	MDCX0014				Y	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5015	1001	2002	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-015	Standby Generator Set - Purchase & Manufacturing		240	240	0	0	0	0	520	0	0	0		2026-02-09 08:00	2026-05-08 17:00	2026-02-09 08:00	2026-05-08 17:00		2026-02-09 08:00	2026-05-08 17:00			2026-02-09 08:00	2026-05-08 17:00				PT_Normal					MDCX0015				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5016	1001	2002	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-016	Generator - Delivery & Receiving Inspection		240	240	0	0	0	0	64	0	0	0		2026-05-11 08:00	2026-05-20 17:00	2026-05-11 08:00	2026-05-20 17:00		2026-05-11 08:00	2026-05-20 17:00			2026-05-11 08:00	2026-05-20 17:00				PT_Normal					MDCX0016				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5017	1001	2002	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-017	Chiller Plant - Purchase & Manufacturing		240	240	0	0	0	0	480	0	0	0		2026-02-09 08:00	2026-05-01 17:00	2026-02-09 08:00	2026-05-01 17:00		2026-02-09 08:00	2026-05-01 17:00			2026-02-09 08:00	2026-05-01 17:00				PT_Normal					MDCX0017				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5018	1001	2002	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-018	Chiller - Delivery & Receiving Inspection		240	240	0	0	0	0	64	0	0	0		2026-05-04 08:00	2026-05-13 17:00	2026-05-04 08:00	2026-05-13 17:00		2026-05-04 08:00	2026-05-13 17:00			2026-05-04 08:00	2026-05-13 17:00				PT_Normal					MDCX0018				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5019	1001	2002	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-019	MV Switchgear - Purchase & Manufacturing		240	240	0	0	0	0	440	0	0	0		2026-02-27 08:00	2026-05-14 17:00	2026-02-27 08:00	2026-05-14 17:00		2026-02-27 08:00	2026-05-14 17:00			2026-02-27 08:00	2026-05-14 17:00				PT_Normal					MDCX0019				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5020	1001	2002	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-020	MV Switchgear - Delivery & Receiving Inspection		240	240	0	0	0	0	56	0	0	0		2026-05-15 08:00	2026-05-25 17:00	2026-05-15 08:00	2026-05-25 17:00		2026-05-15 08:00	2026-05-25 17:00			2026-05-15 08:00	2026-05-25 17:00				PT_Normal					MDCX0020				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5021	1001	2002	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-021	CRAH Units - Procurement & Delivery		240	240	0	0	0	0	320	0	0	0		2026-02-09 08:00	2026-04-03 17:00	2026-02-09 08:00	2026-04-03 17:00		2026-02-09 08:00	2026-04-03 17:00			2026-02-09 08:00	2026-04-03 17:00				PT_Normal					MDCX0021				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5022	1001	2002	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-022	PDU & Overhead Busway - Procurement & Delivery		240	240	0	0	0	0	280	0	0	0		2026-02-09 08:00	2026-03-27 17:00	2026-02-09 08:00	2026-03-27 17:00		2026-02-09 08:00	2026-03-27 17:00			2026-02-09 08:00	2026-03-27 17:00				PT_Normal					MDCX0022				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5023	1001	2003	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-023	Site Grading & Bulk Excavation		240	240	0	0	0	0	96	0	0	0		2025-12-22 08:00	2026-01-06 17:00	2025-12-22 08:00	2026-01-06 17:00		2025-12-22 08:00	2026-01-06 17:00			2025-12-22 08:00	2026-01-06 17:00				PT_Normal					MDCX0023				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5024	1001	2003	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-024	Foundations & Pile Caps		240	240	0	0	0	0	160	0	0	0		2026-01-15 08:00	2026-02-11 17:00	2026-01-15 08:00	2026-02-11 17:00		2026-01-15 08:00	2026-02-11 17:00			2026-01-15 08:00	2026-02-11 17:00				PT_Normal					MDCX0024				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5025	1001	2003	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-025	Ground Floor Slab-on-Grade		240	240	0	0	0	0	96	0	0	0		2026-02-12 08:00	2026-02-27 17:00	2026-02-12 08:00	2026-02-27 17:00		2026-02-12 08:00	2026-02-27 17:00			2026-02-12 08:00	2026-02-27 17:00				PT_Normal					MDCX0025				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5026	1001	2003	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-026	Superstructure & Roof Deck		240	240	0	0	0	0	240	0	0	0		2026-03-02 08:00	2026-04-10 17:00	2026-03-02 08:00	2026-04-10 17:00		2026-03-02 08:00	2026-04-10 17:00			2026-03-02 08:00	2026-04-10 17:00				PT_Normal					MDCX0026				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5027	1001	2003	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-027	Building Envelope & Weatherproofing		240	240	0	0	0	0	144	0	0	0		2026-04-13 08:00	2026-05-06 17:00	2026-04-13 08:00	2026-05-06 17:00		2026-04-13 08:00	2026-05-06 17:00			2026-04-13 08:00	2026-05-06 17:00				PT_Normal					MDCX0027				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5028	1001	2003	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-028	Data Hall Fit-Out & Raised Access Floor		240	240	0	0	0	0	160	0	0	0		2026-05-07 08:00	2026-06-03 17:00	2026-05-07 08:00	2026-06-03 17:00		2026-05-07 08:00	2026-06-03 17:00			2026-05-07 08:00	2026-06-03 17:00				PT_Normal					MDCX0028				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5029	1001	2003	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-029	Electrical Room & Plant Room Construction		240	240	0	0	0	0	128	0	0	0		2026-04-13 08:00	2026-05-04 17:00	2026-04-13 08:00	2026-05-04 17:00		2026-04-13 08:00	2026-05-04 17:00			2026-04-13 08:00	2026-05-04 17:00				PT_Normal					MDCX0029				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5030	1001	2004	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-030	Primary Cable Containment & Tray Systems		240	240	0	0	0	0	120	0	0	0		2026-05-05 08:00	2026-05-25 17:00	2026-05-05 08:00	2026-05-25 17:00		2026-05-05 08:00	2026-05-25 17:00			2026-05-05 08:00	2026-05-25 17:00				PT_Normal					MDCX0030				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5031	1001	2004	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-031	MV Switchgear Installation		240	240	0	0	0	0	96	0	0	0		2026-05-26 08:00	2026-06-10 17:00	2026-05-26 08:00	2026-06-10 17:00		2026-05-26 08:00	2026-06-10 17:00			2026-05-26 08:00	2026-06-10 17:00				PT_Normal					MDCX0031				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5032	1001	2004	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-032	Generator Installation & Fuel Oil System		240	240	0	0	0	0	112	0	0	0		2026-05-21 08:00	2026-06-09 17:00	2026-05-21 08:00	2026-06-09 17:00		2026-05-21 08:00	2026-06-09 17:00			2026-05-21 08:00	2026-06-09 17:00				PT_Normal					MDCX0032				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5033	1001	2004	1	0	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_NotStart	ACT-033	UPS-02A Installation & Alignment		0	0	80	0	0	0	80	0	0	0				2026-08-14 08:00	2026-08-27 17:00		2026-08-14 08:00	2026-08-27 17:00		2026-08-27 17:00	2026-07-16 08:00	2026-07-29 17:00	2026-08-14 08:00	2026-08-27 17:00		PT_Normal			1	1	MDCX0033				Y	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5034	1001	2004	1	0	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_NotStart	ACT-034	UPS-02A Battery System Installation		0	0	64	0	0	0	64	0	0	0				2026-08-28 08:00	2026-09-08 17:00		2026-08-28 08:00	2026-09-08 17:00		2026-09-08 17:00	2026-07-30 08:00	2026-08-10 17:00	2026-08-28 08:00	2026-09-08 17:00		PT_Normal			1	1	MDCX0034				Y	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5035	1001	2004	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-035	PDU & Busway Installation		240	240	0	0	0	0	96	0	0	0		2026-06-04 08:00	2026-06-19 17:00	2026-06-04 08:00	2026-06-19 17:00		2026-06-04 08:00	2026-06-19 17:00			2026-06-04 08:00	2026-06-19 17:00				PT_Normal					MDCX0035				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5036	1001	2004	1	0	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_NotStart	ACT-036	LV Distribution & Final Circuits		240	240	128	0	0	0	128	0	0	0				2026-09-09 08:00	2026-09-30 17:00		2026-09-09 08:00	2026-09-30 17:00		2026-09-30 17:00	2026-08-11 08:00	2026-09-01 17:00	2026-09-09 08:00	2026-09-30 17:00		PT_Normal					MDCX0036				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5037	1001	2004	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-037	Earthing, Bonding & Lightning Protection		240	240	0	0	0	0	80	0	0	0		2026-05-26 08:00	2026-06-08 17:00	2026-05-26 08:00	2026-06-08 17:00		2026-05-26 08:00	2026-06-08 17:00			2026-05-26 08:00	2026-06-08 17:00				PT_Normal					MDCX0037				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5038	1001	2004	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-038	Fire Detection & Suppression Installation		240	240	0	0	0	0	112	0	0	0		2026-06-04 08:00	2026-06-23 17:00	2026-06-04 08:00	2026-06-23 17:00		2026-06-04 08:00	2026-06-23 17:00			2026-06-04 08:00	2026-06-23 17:00				PT_Normal					MDCX0038				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5039	1001	2005	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-039	Chilled Water Piping & Pumps		240	240	0	0	0	0	144	0	0	0		2026-05-14 08:00	2026-06-08 17:00	2026-05-14 08:00	2026-06-08 17:00		2026-05-14 08:00	2026-06-08 17:00			2026-05-14 08:00	2026-06-08 17:00				PT_Normal					MDCX0039				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5040	1001	2005	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-040	Chiller Plant Installation		240	240	0	0	0	0	96	0	0	0		2026-06-09 08:00	2026-06-24 17:00	2026-06-09 08:00	2026-06-24 17:00		2026-06-09 08:00	2026-06-24 17:00			2026-06-09 08:00	2026-06-24 17:00				PT_Normal					MDCX0040				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5041	1001	2005	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-041	CRAH Unit Installation		240	240	0	0	0	0	112	0	0	0		2026-06-04 08:00	2026-06-23 17:00	2026-06-04 08:00	2026-06-23 17:00		2026-06-04 08:00	2026-06-23 17:00			2026-06-04 08:00	2026-06-23 17:00				PT_Normal					MDCX0041				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5042	1001	2005	1	100	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_Complete	ACT-042	BMS & Controls Installation		240	240	0	0	0	0	128	0	0	0		2026-06-25 08:00	2026-07-16 17:00	2026-06-25 08:00	2026-07-16 17:00		2026-06-25 08:00	2026-07-16 17:00			2026-06-25 08:00	2026-07-16 17:00				PT_Normal					MDCX0042				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5043	1001	2006	1	0	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_NotStart	ACT-043	Cable Testing & Point-to-Point Checks		240	240	80	0	0	0	80	0	0	0				2026-10-01 08:00	2026-10-14 17:00		2026-10-01 08:00	2026-10-14 17:00		2026-10-14 17:00	2026-09-02 08:00	2026-09-15 17:00	2026-10-01 08:00	2026-10-14 17:00		PT_Normal					MDCX0043				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5044	1001	2006	1	0	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_NotStart	ACT-044	MV Switchgear Energisation		240	240	48	0	0	0	48	0	0	0				2026-10-15 08:00	2026-10-22 17:00		2026-10-15 08:00	2026-10-22 17:00		2026-10-22 17:00	2026-09-16 08:00	2026-09-23 17:00	2026-10-15 08:00	2026-10-22 17:00		PT_Normal					MDCX0044				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5045	1001	2006	1	0	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_NotStart	ACT-045	Generator Load-Bank Test (Level 3)		240	240	64	0	0	0	64	0	0	0				2026-10-23 08:00	2026-11-03 17:00		2026-10-23 08:00	2026-11-03 17:00		2026-11-03 17:00	2026-09-24 08:00	2026-10-05 17:00	2026-10-23 08:00	2026-11-03 17:00		PT_Normal					MDCX0045				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5046	1001	2006	1	0	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_NotStart	ACT-046	UPS-02A Commissioning & Retransfer Test		0	0	64	0	0	0	64	0	0	0				2026-10-23 08:00	2026-11-03 17:00		2026-10-23 08:00	2026-11-03 17:00		2026-11-03 17:00	2026-09-24 08:00	2026-10-05 17:00	2026-10-23 08:00	2026-11-03 17:00		PT_Normal			1	1	MDCX0046				Y	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5047	1001	2006	1	0	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_NotStart	ACT-047	Mechanical Systems Commissioning (Level 3)		240	240	80	0	0	0	80	0	0	0				2026-10-23 08:00	2026-11-05 17:00		2026-10-23 08:00	2026-11-05 17:00		2026-11-05 17:00	2026-09-24 08:00	2026-10-07 17:00	2026-10-23 08:00	2026-11-05 17:00		PT_Normal					MDCX0047				N	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5048	1001	2006	1	0	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_NotStart	ACT-048	Integrated Systems Test (IST) - Level 4		0	0	96	0	0	0	96	0	0	0				2026-11-06 08:00	2026-11-23 17:00		2026-11-06 08:00	2026-11-23 17:00		2026-11-23 17:00	2026-10-08 08:00	2026-10-23 17:00	2026-11-06 08:00	2026-11-23 17:00		PT_Normal			1	1	MDCX0048				Y	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5049	1001	2006	1	0	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_NotStart	ACT-049	Integrated Systems Test - Level 5 (Black Building)		0	0	64	0	0	0	64	0	0	0				2026-11-24 08:00	2026-12-03 17:00		2026-11-24 08:00	2026-12-03 17:00		2026-12-03 17:00	2026-10-26 08:00	2026-11-04 17:00	2026-11-24 08:00	2026-12-03 17:00		PT_Normal			1	1	MDCX0049				Y	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5050	1001	2006	1	0	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_NotStart	ACT-050	Reliability / 96-Hour Demonstration Test		0	0	40	0	0	0	40	0	0	0				2026-12-04 08:00	2026-12-10 17:00		2026-12-04 08:00	2026-12-10 17:00		2026-12-10 17:00	2026-11-05 08:00	2026-11-11 17:00	2026-12-04 08:00	2026-12-10 17:00		PT_Normal			1	1	MDCX0050				Y	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5051	1001	2006	1	0	N	1	N	Y	CP_Drtn	TT_Task	DT_FixedDUR2	TK_NotStart	ACT-051	Punchlist, De-snag & Handover Documentation		0	0	80	0	0	0	80	0	0	0				2026-12-11 08:00	2026-12-24 17:00		2026-12-11 08:00	2026-12-24 17:00		2026-12-24 17:00	2026-11-12 08:00	2026-11-25 17:00	2026-12-11 08:00	2026-12-24 17:00		PT_Normal			1	1	MDCX0051				Y	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%R	5052	1001	2006	1	0	N	1	N	Y	CP_Drtn	TT_FinMile	DT_FixedDUR2	TK_NotStart	ACT-052	Rated-3 (TIA-942) / Tier III (Uptime) Commissioning Complete		0	0	0	0	0	0	0	0	0	0				2026-12-25 08:00	2026-12-25 17:00		2026-12-25 08:00	2026-12-25 17:00		2026-12-25 17:00	2026-11-26 08:00	2026-11-26 17:00	2026-12-25 08:00	2026-12-25 17:00		PT_Normal			1	1	MDCX0052				Y	0	0			2025-12-01 08:00	2026-07-20 08:00	planner	planner		N
+%T	TASKPRED
+%F	task_pred_id	task_id	pred_task_id	proj_id	pred_proj_id	pred_type	lag_hr_cnt	float_path	aref	arls	comments
+%R	9001	5002	5001	1001	1001	PR_FS	0				
+%R	9002	5003	5002	1001	1001	PR_FS	0				
+%R	9003	5004	5003	1001	1001	PR_FS	0				
+%R	9004	5005	5003	1001	1001	PR_FS	0				
+%R	9005	5006	5002	1001	1001	PR_FS	0				
+%R	9006	5007	5003	1001	1001	PR_FS	0				
+%R	9007	5008	5004	1001	1001	PR_FS	0				
+%R	9008	5009	5004	1001	1001	PR_FS	0				
+%R	9009	5009	5005	1001	1001	PR_FS	0				
+%R	9010	5009	5006	1001	1001	PR_FS	0				
+%R	9011	5009	5007	1001	1001	PR_FS	0				
+%R	9012	5010	5004	1001	1001	PR_FS	0				
+%R	9013	5011	5010	1001	1001	PR_FS	0				
+%R	9014	5012	5011	1001	1001	PR_FS	0				
+%R	9015	5013	5012	1001	1001	PR_FS	0				
+%R	9016	5014	5013	1001	1001	PR_FS	0				
+%R	9017	5015	5004	1001	1001	PR_FS	0				
+%R	9018	5016	5015	1001	1001	PR_FS	0				
+%R	9019	5017	5005	1001	1001	PR_FS	0				
+%R	9020	5018	5017	1001	1001	PR_FS	0				
+%R	9021	5019	5004	1001	1001	PR_FS	0				
+%R	9022	5019	5008	1001	1001	PR_FS	0				
+%R	9023	5020	5019	1001	1001	PR_FS	0				
+%R	9024	5021	5005	1001	1001	PR_FS	0				
+%R	9025	5022	5004	1001	1001	PR_FS	0				
+%R	9026	5023	5002	1001	1001	PR_FS	0				
+%R	9027	5024	5023	1001	1001	PR_FS	0				
+%R	9028	5024	5006	1001	1001	PR_FS	0				
+%R	9029	5025	5024	1001	1001	PR_FS	0				
+%R	9030	5026	5025	1001	1001	PR_FS	0				
+%R	9031	5027	5026	1001	1001	PR_FS	0				
+%R	9032	5028	5027	1001	1001	PR_FS	0				
+%R	9033	5029	5026	1001	1001	PR_FS	0				
+%R	9034	5030	5029	1001	1001	PR_FS	0				
+%R	9035	5031	5020	1001	1001	PR_FS	0				
+%R	9036	5031	5029	1001	1001	PR_FS	0				
+%R	9037	5032	5016	1001	1001	PR_FS	0				
+%R	9038	5032	5029	1001	1001	PR_FS	0				
+%R	9039	5033	5014	1001	1001	PR_FS	0				
+%R	9040	5033	5031	1001	1001	PR_FS	0				
+%R	9041	5034	5033	1001	1001	PR_FS	0				
+%R	9042	5035	5022	1001	1001	PR_FS	0				
+%R	9043	5035	5028	1001	1001	PR_FS	0				
+%R	9044	5036	5035	1001	1001	PR_FS	0				
+%R	9045	5036	5034	1001	1001	PR_FS	0				
+%R	9046	5037	5030	1001	1001	PR_FS	0				
+%R	9047	5038	5028	1001	1001	PR_FS	0				
+%R	9048	5039	5018	1001	1001	PR_FS	0				
+%R	9049	5039	5029	1001	1001	PR_FS	0				
+%R	9050	5040	5018	1001	1001	PR_FS	0				
+%R	9051	5040	5039	1001	1001	PR_FS	0				
+%R	9052	5041	5021	1001	1001	PR_FS	0				
+%R	9053	5041	5028	1001	1001	PR_FS	0				
+%R	9054	5042	5040	1001	1001	PR_FS	0				
+%R	9055	5042	5041	1001	1001	PR_FS	0				
+%R	9056	5043	5036	1001	1001	PR_FS	0				
+%R	9057	5043	5037	1001	1001	PR_FS	0				
+%R	9058	5044	5031	1001	1001	PR_FS	0				
+%R	9059	5044	5043	1001	1001	PR_FS	0				
+%R	9060	5045	5032	1001	1001	PR_FS	0				
+%R	9061	5045	5044	1001	1001	PR_FS	0				
+%R	9062	5046	5034	1001	1001	PR_FS	0				
+%R	9063	5046	5044	1001	1001	PR_FS	0				
+%R	9064	5047	5042	1001	1001	PR_FS	0				
+%R	9065	5047	5044	1001	1001	PR_FS	0				
+%R	9066	5048	5045	1001	1001	PR_FS	0				
+%R	9067	5048	5046	1001	1001	PR_FS	0				
+%R	9068	5048	5047	1001	1001	PR_FS	0				
+%R	9069	5049	5048	1001	1001	PR_FS	0				
+%R	9070	5050	5049	1001	1001	PR_FS	0				
+%R	9071	5051	5050	1001	1001	PR_FS	0				
+%R	9072	5052	5051	1001	1001	PR_FS	0				
+%E

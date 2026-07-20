@@ -1,0 +1,390 @@
+{
+  "meta": {
+    "project": "Meridian Data Centre - Phase 1 (Nashik, 24 MW)",
+    "document_no": "CX-PROC-MDC-P1",
+    "revision": "A",
+    "tier_target": "Rated-3 (TIA-942) / Tier III (Uptime)",
+    "note": "Acceptance criteria are structured data compared deterministically by the commissioning engine. Standard references are representative and are not verbatim clause citations. Pass/fail is derived from submitted readings; no results are pre-recorded in this file.",
+    "criteria_operators": {
+      "less_equal": "reading <= limit passes",
+      "greater_equal": "reading >= limit passes",
+      "equal": "reading == limit (within tolerance) passes",
+      "range": "min <= reading <= max passes",
+      "boolean": "reading must equal expected (true/false)"
+    }
+  },
+  "procedures": [
+    {
+      "procedure_id": "CX-UPS-CM-01",
+      "title": "UPS-02A Concurrent Maintainability & Retransfer Test",
+      "system": "Electrical - Static UPS",
+      "equipment_tag": "UPS-02A",
+      "linked_activity": "ACT-046",
+      "tier_target": "Rated-3 (TIA-942) / Tier III (Uptime)",
+      "standard_ref": "ANSI/TIA-942-C (representative); Uptime Institute Tier Certification (representative)",
+      "objective": "Demonstrate that UPS-02A supports the critical load without interruption through mains-failure, static-bypass and maintenance-bypass transitions, and that transfer/retransfer timing meets the specified limits for a concurrently maintainable topology.",
+      "prerequisites": [
+        "UPS-02A installation and battery system complete (ACT-033, ACT-034).",
+        "Upstream MV switchgear energised (ACT-044).",
+        "Calibrated power quality analyser and transient recorder connected at output.",
+        "Load bank connected to the critical bus at the specified test load."
+      ],
+      "steps": [
+        {
+          "step_no": 1,
+          "instruction": "Establish 100% rated load on the UPS output via load bank; confirm steady-state online (double-conversion) operation.",
+          "measurement": "load_percent",
+          "unit": "%",
+          "acceptance_criteria": {
+            "operator": "range",
+            "min": 95,
+            "max": 100,
+            "unit": "%"
+          },
+          "hold_point": false
+        },
+        {
+          "step_no": 2,
+          "instruction": "Interrupt the rectifier input to simulate mains failure; confirm no interruption to the critical bus as the UPS transfers to stored energy.",
+          "measurement": "output_interruption",
+          "unit": "boolean",
+          "acceptance_criteria": {
+            "operator": "boolean",
+            "expected": false
+          },
+          "hold_point": true
+        },
+        {
+          "step_no": 3,
+          "instruction": "Measure inverter-to-static-bypass transfer time on a forced synchronised transfer.",
+          "measurement": "transfer_time_ms",
+          "unit": "ms",
+          "acceptance_criteria": {
+            "operator": "less_equal",
+            "limit": 4,
+            "unit": "ms"
+          },
+          "hold_point": true
+        },
+        {
+          "step_no": 4,
+          "instruction": "Restore inverter and measure the retransfer time from static bypass back to inverter (return transfer). This is the concurrent-maintainability retransfer hold point.",
+          "measurement": "retransfer_time_ms",
+          "unit": "ms",
+          "acceptance_criteria": {
+            "operator": "less_equal",
+            "limit": 4,
+            "unit": "ms"
+          },
+          "hold_point": true,
+          "critical_hold": true
+        },
+        {
+          "step_no": 5,
+          "instruction": "Verify output voltage regulation during and after transfers.",
+          "measurement": "output_voltage_regulation_percent",
+          "unit": "%",
+          "acceptance_criteria": {
+            "operator": "less_equal",
+            "limit": 1.0,
+            "unit": "%"
+          },
+          "hold_point": false
+        },
+        {
+          "step_no": 6,
+          "instruction": "Perform maintenance-bypass transfer and return; confirm the load is not interrupted at any point (concurrent maintainability).",
+          "measurement": "output_interruption",
+          "unit": "boolean",
+          "acceptance_criteria": {
+            "operator": "boolean",
+            "expected": false
+          },
+          "hold_point": true
+        },
+        {
+          "step_no": 7,
+          "instruction": "Confirm battery autonomy at rated load meets the specified minimum backup time on discharge.",
+          "measurement": "autonomy_min",
+          "unit": "min",
+          "acceptance_criteria": {
+            "operator": "greater_equal",
+            "limit": 5,
+            "unit": "min"
+          },
+          "hold_point": false
+        }
+      ],
+      "sign_off": {
+        "requires_all_pass": true,
+        "on_fail": "raise_rfi_and_block_signoff"
+      }
+    },
+    {
+      "procedure_id": "CX-GEN-LB-02",
+      "title": "Standby Generator Load-Bank Test (Level 3)",
+      "system": "Electrical - Standby Generation",
+      "equipment_tag": "GEN-01",
+      "linked_activity": "ACT-045",
+      "tier_target": "Rated-3 (TIA-942) / Tier III (Uptime)",
+      "standard_ref": "ANSI/TIA-942-C (representative); Uptime Institute Tier Certification (representative)",
+      "objective": "Demonstrate generator start time, load acceptance and sustained full-load operation.",
+      "prerequisites": [
+        "Generator installation and fuel system complete (ACT-032).",
+        "Resistive/reactive load bank connected.",
+        "Fuel level confirmed for test duration."
+      ],
+      "steps": [
+        {
+          "step_no": 1,
+          "instruction": "Issue start signal and measure time to reach rated voltage and frequency, ready to accept load.",
+          "measurement": "start_time_s",
+          "unit": "s",
+          "acceptance_criteria": {
+            "operator": "less_equal",
+            "limit": 10,
+            "unit": "s"
+          },
+          "hold_point": true
+        },
+        {
+          "step_no": 2,
+          "instruction": "Apply block load and verify frequency dip and recovery within class limits.",
+          "measurement": "frequency_dip_percent",
+          "unit": "%",
+          "acceptance_criteria": {
+            "operator": "less_equal",
+            "limit": 10,
+            "unit": "%"
+          },
+          "hold_point": false
+        },
+        {
+          "step_no": 3,
+          "instruction": "Run at 100% rated standby load and confirm stable operation.",
+          "measurement": "load_percent",
+          "unit": "%",
+          "acceptance_criteria": {
+            "operator": "range",
+            "min": 95,
+            "max": 100,
+            "unit": "%"
+          },
+          "hold_point": false
+        },
+        {
+          "step_no": 4,
+          "instruction": "Confirm steady-state voltage regulation at full load.",
+          "measurement": "voltage_regulation_percent",
+          "unit": "%",
+          "acceptance_criteria": {
+            "operator": "less_equal",
+            "limit": 1.5,
+            "unit": "%"
+          },
+          "hold_point": false
+        }
+      ],
+      "sign_off": {
+        "requires_all_pass": true,
+        "on_fail": "raise_rfi_and_block_signoff"
+      }
+    },
+    {
+      "procedure_id": "CX-IST-L4-03",
+      "title": "Integrated Systems Test - Level 4 (Failure Mode / Pull-the-Plug)",
+      "system": "Integrated - Electrical & Mechanical",
+      "equipment_tag": "SITE",
+      "linked_activity": "ACT-048",
+      "tier_target": "Rated-3 (TIA-942) / Tier III (Uptime)",
+      "standard_ref": "ANSI/TIA-942-C (representative); Uptime Institute Tier Certification (representative)",
+      "objective": "Demonstrate integrated response to utility failure: generator start, UPS ride-through, cooling continuity, and no interruption to the critical load.",
+      "prerequisites": [
+        "UPS, generator and cooling commissioning (Level 3) complete.",
+        "Full design load (or representative load bank) on critical and mechanical systems.",
+        "All BMS points verified."
+      ],
+      "steps": [
+        {
+          "step_no": 1,
+          "instruction": "Open the utility incomer to simulate total mains loss; confirm the critical load is not interrupted (UPS ride-through).",
+          "measurement": "critical_load_interruption",
+          "unit": "boolean",
+          "acceptance_criteria": {
+            "operator": "boolean",
+            "expected": false
+          },
+          "hold_point": true
+        },
+        {
+          "step_no": 2,
+          "instruction": "Confirm generator starts and assumes load within the required time.",
+          "measurement": "gen_online_time_s",
+          "unit": "s",
+          "acceptance_criteria": {
+            "operator": "less_equal",
+            "limit": 15,
+            "unit": "s"
+          },
+          "hold_point": true
+        },
+        {
+          "step_no": 3,
+          "instruction": "Confirm data-hall temperature remains within the environmental envelope throughout the transition.",
+          "measurement": "data_hall_temp_c",
+          "unit": "C",
+          "acceptance_criteria": {
+            "operator": "range",
+            "min": 18,
+            "max": 27,
+            "unit": "C"
+          },
+          "hold_point": false
+        },
+        {
+          "step_no": 4,
+          "instruction": "Restore utility and confirm controlled return of sources with no load interruption.",
+          "measurement": "critical_load_interruption",
+          "unit": "boolean",
+          "acceptance_criteria": {
+            "operator": "boolean",
+            "expected": false
+          },
+          "hold_point": true
+        }
+      ],
+      "sign_off": {
+        "requires_all_pass": true,
+        "on_fail": "raise_rfi_and_block_signoff"
+      }
+    },
+    {
+      "procedure_id": "CX-COOL-CM-04",
+      "title": "Cooling Plant Concurrent Maintainability Test",
+      "system": "Mechanical - Chilled Water",
+      "equipment_tag": "CHW-PLANT",
+      "linked_activity": "ACT-047",
+      "tier_target": "Rated-3 (TIA-942) / Tier III (Uptime)",
+      "standard_ref": "ANSI/TIA-942-C (representative); Uptime Institute Tier Certification (representative)",
+      "objective": "Demonstrate that any single chiller/pump/section can be isolated for maintenance without reducing delivered cooling below the critical load.",
+      "prerequisites": [
+        "Cooling installation complete (ACT-040, ACT-041) and BMS commissioned (ACT-042).",
+        "Design heat load or load banks applied in the data hall."
+      ],
+      "steps": [
+        {
+          "step_no": 1,
+          "instruction": "Isolate one duty chiller; confirm the standby starts and delivered capacity remains at/above the critical load.",
+          "measurement": "delivered_capacity_percent",
+          "unit": "%",
+          "acceptance_criteria": {
+            "operator": "greater_equal",
+            "limit": 100,
+            "unit": "%"
+          },
+          "hold_point": true
+        },
+        {
+          "step_no": 2,
+          "instruction": "Confirm chilled-water supply temperature is maintained during the transition.",
+          "measurement": "chws_temp_c",
+          "unit": "C",
+          "acceptance_criteria": {
+            "operator": "range",
+            "min": 16,
+            "max": 20,
+            "unit": "C"
+          },
+          "hold_point": false
+        },
+        {
+          "step_no": 3,
+          "instruction": "Isolate one primary pump; confirm hydraulic continuity via the redundant path.",
+          "measurement": "flow_continuity",
+          "unit": "boolean",
+          "acceptance_criteria": {
+            "operator": "boolean",
+            "expected": true
+          },
+          "hold_point": true
+        },
+        {
+          "step_no": 4,
+          "instruction": "Confirm data-hall temperature remains within the environmental envelope throughout.",
+          "measurement": "data_hall_temp_c",
+          "unit": "C",
+          "acceptance_criteria": {
+            "operator": "range",
+            "min": 18,
+            "max": 27,
+            "unit": "C"
+          },
+          "hold_point": false
+        }
+      ],
+      "sign_off": {
+        "requires_all_pass": true,
+        "on_fail": "raise_rfi_and_block_signoff"
+      }
+    },
+    {
+      "procedure_id": "CX-REL-96-05",
+      "title": "Reliability / 96-Hour Demonstration Test",
+      "system": "Integrated - Whole Facility",
+      "equipment_tag": "SITE",
+      "linked_activity": "ACT-050",
+      "tier_target": "Rated-3 (TIA-942) / Tier III (Uptime)",
+      "standard_ref": "ANSI/TIA-942-C (representative); Uptime Institute Tier Certification (representative)",
+      "objective": "Demonstrate sustained stable operation of the integrated facility at design load over a continuous 96-hour period.",
+      "prerequisites": [
+        "All Level 3 and Level 4 tests passed.",
+        "Design load (or representative load banks) applied continuously.",
+        "Trending enabled on all critical BMS/EPMS points."
+      ],
+      "steps": [
+        {
+          "step_no": 1,
+          "instruction": "Operate the facility at design load for the full duration without unplanned trip or interruption; record total continuous run time.",
+          "measurement": "continuous_runtime_h",
+          "unit": "h",
+          "acceptance_criteria": {
+            "operator": "greater_equal",
+            "limit": 96,
+            "unit": "h"
+          },
+          "hold_point": true
+        },
+        {
+          "step_no": 2,
+          "instruction": "Confirm number of unplanned critical-load interruptions over the period.",
+          "measurement": "unplanned_interruptions",
+          "unit": "count",
+          "acceptance_criteria": {
+            "operator": "equal",
+            "limit": 0,
+            "tolerance": 0,
+            "unit": "count"
+          },
+          "hold_point": true
+        },
+        {
+          "step_no": 3,
+          "instruction": "Confirm the data-hall environmental envelope was maintained throughout the demonstration.",
+          "measurement": "envelope_excursions",
+          "unit": "count",
+          "acceptance_criteria": {
+            "operator": "equal",
+            "limit": 0,
+            "tolerance": 0,
+            "unit": "count"
+          },
+          "hold_point": false
+        }
+      ],
+      "sign_off": {
+        "requires_all_pass": true,
+        "on_fail": "raise_rfi_and_block_signoff"
+      }
+    }
+  ]
+}
