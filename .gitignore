@@ -1,0 +1,23 @@
+# secrets & local env
+.venv/
+.env
+.claude/settings.local.json
+
+# python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# derived state - everything here is re-computed from data/sources/
+data/cache/
+data/chroma/
+data/knowledge_graph.json
+data/events.json
+data/convergence_alerts.json
+data/guide_sessions.json
+data/ncrs.json
+data/document_log.json
+*.lock
+!package-lock.json
