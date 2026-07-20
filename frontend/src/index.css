@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+/* ── Minimalist Monochrome design tokens ──────────────────────────────
+   Pure black & white. Gray only for secondary text and hairlines.
+   Serif typography as hero. Zero radius. Zero shadows. Lines, not mass. */
+@theme {
+  --color-paper: #ffffff;
+  --color-ink: #000000;
+  --color-muted: #f5f5f5;
+  --color-muted-fg: #525252;
+  --color-line: #e5e5e5;
+  /* the ONE deliberate exception to monochrome: live risk states only
+     (alert pulse, CRITICAL, FAIL, risk storm, P90). Never decorative. */
+  --color-alarm: #dc2626;
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Source Serif 4", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* sharp geometry is non-negotiable */
+  --radius-*: initial;
+}
+
+body {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: "Source Serif 4", Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* layered paper textures: horizontal hairlines + fractal noise */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    #000 1px,
+    #000 2px
+  );
+  background-size: 100% 4px;
+  opacity: 0.015;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+}
+
+/* accessibility: black focus rings, visible only for keyboard users */
+:focus-visible {
+  outline: 3px solid #000000;
+  outline-offset: 3px;
+}
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+}
+
+::selection {
+  background: #000000;
+  color: #ffffff;
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #ffffff; border-left: 1px solid #e5e5e5; }
+::-webkit-scrollbar-thumb { background: #000000; }
